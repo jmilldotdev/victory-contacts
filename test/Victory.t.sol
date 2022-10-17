@@ -1,12 +1,20 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.17;
 
-import "forge-std/Test.sol";
+import "./TestBaseWorkflow.sol";
+import "../src/Victory.sol";
 
-contract ContractTest is Test {
-    function setUp() public {}
+contract ContractTest is TestBaseWorkflow {
+    function setUp() public override {
+        super.setUp();
 
-    function testExample() public {
+        Victory victory = new Victory(
+            IJBController(_jbController),
+            IJBOperatorStore(_jbOperatorStore)
+        );
+    }
+
+    function testExample() external {
         assertTrue(true);
     }
 }
